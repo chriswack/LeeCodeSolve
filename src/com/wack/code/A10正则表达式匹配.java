@@ -56,62 +56,39 @@ import java.util.List;
 public class A10正则表达式匹配 {
 
     public static void main(String[] args) {
-        System.out.println("s*bd*aad*".startsWith(""));
-        System.out.println(subStr("s", 0));
-        boolean res = new A10正则表达式匹配().isMatch("sssb", "s*b");
+        long start = System.currentTimeMillis();
+        boolean res = new A10正则表达式匹配().isMatch2("aab", "cba*b");
         System.out.println(res);
+        System.out.println(System.currentTimeMillis() - start + "ms");
+
     }
+
+
+    public boolean isMatch2(String s, String p) {
+        boolean[][] dp = new boolean[s.length() + 1][p.length() + 1];
+        dp[s.length()][p.length()] = true;
+        for (int i = s.length(); i >= 0; i--) {
+            for (int j = p.length() - 1; j >= 0; j--) {
+                boolean first_match = (i < s.length() && (p.charAt(j) == s.charAt(i) || p.charAt(j) == '.'));
+                if (j + 1 < p.length() && p.charAt(j + 1) == '*') {
+                    dp[i][j] = dp[i][j + 2] || first_match && dp[i + 1][j];
+                } else {
+                    dp[i][j] = first_match && dp[i + 1][j + 1];
+                }
+            }
+        }
+        return dp[0][0];
+    }
+
 
     public boolean isMatch(String s, String p) {
-        int index = p.indexOf("*");
-        if (index > 0) {
-            System.out.println(index);
-            String pPre = p.substring(0, index - 1);//*前面除去match的匹配部分
-            if (s.startsWith(pPre)) {//前面匹配成功
-                s = s.substring(index - 1);//截取前面匹配部分
-                String match = subStr(p, index - 1);//获取匹配部分
-                while (s.startsWith(match)) {//匹配match字符
-                    s = s.substring(1);//匹配成功截取新的字符
-                }
-                p = p.substring(index + 1);//截取p已匹配和*部分
-                return isMatch(s, p);
-            } else {
-                return false;
-            }
-        } else if (index == -1) {
-            boolean isMatch = s.equals(p);
-            return isMatch;
-        }
-        return false;
-    }
+        if (p.isEmpty()) return s.isEmpty();
+        boolean first_match = (!s.isEmpty() && (p.charAt(0) == s.charAt(0) || p.charAt(0) == '.'));
 
-    private static String subStr(String s, int index) {
-        if (index >= 0 && index < s.length()) {
-            return s.substring(index, index + 1);
+        if (p.length() >= 2 && p.charAt(1) == '*') {
+            return (isMatch(s, p.substring(2)) || (first_match && isMatch(s.substring(1), p)));
         } else {
-            return "";
-        }
-    }
-
-    /**
-     * 获得减去最后一个字符的字符串
-     *
-     * @param s
-     * @return
-     */
-    private static String after(String s) {
-        if (s.length() > 0) {
-            return s.substring(0, s.length() - 1);
-        } else {
-            return "";
-        }
-    }
-
-    private static String last(String s) {
-        if (s.length() > 0) {
-            return s.substring(s.length() - 1);
-        } else {
-            return "";
+            return first_match && isMatch(s.substring(1), p.substring(1));
         }
     }
 
