@@ -1,5 +1,7 @@
 package com.wack.code;
 
+import com.wack.code.entity.ListNode;
+
 /**
  * 给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
  *
@@ -38,15 +40,6 @@ public class A2两数相加 {
             node = curr;
         }
         return node;
-    }
-
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        public ListNode(int x) {
-            val = x;
-        }
     }
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
