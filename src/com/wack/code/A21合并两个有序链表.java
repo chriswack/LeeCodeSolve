@@ -1,6 +1,7 @@
 package com.wack.code;
 
 import com.wack.code.entity.ListNode;
+import com.wack.code.entity.Util;
 
 /**
  * 将两个升序链表合并为一个新的升序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
@@ -19,8 +20,8 @@ public class A21合并两个有序链表 {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
 
-        int[] n1 = new int[100];
-        int[] n2 = new int[100];
+        int[] n1 = new int[10];
+        int[] n2 = new int[10];
         for (int i = 0; i < n1.length; i++) {
             n1[i] = i * 2;
             n2[i] = i * 2 + 1;
@@ -28,10 +29,7 @@ public class A21合并两个有序链表 {
 
         ListNode mergeTwoLists = new A21合并两个有序链表().mergeTwoLists1(ListNode.get(n1), ListNode.get(n2));
         System.out.println((System.currentTimeMillis() - start) + "ms");
-        while (mergeTwoLists != null) {
-            System.out.print(mergeTwoLists.val + "=>");
-            mergeTwoLists = mergeTwoLists.next;
-        }
+        System.out.println(Util.toStr(mergeTwoLists));
     }
 
     //递归

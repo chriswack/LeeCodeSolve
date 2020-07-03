@@ -1,6 +1,7 @@
 package com.wack.code;
 
 import com.wack.code.entity.ListNode;
+import com.wack.code.entity.Util;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
@@ -29,7 +30,7 @@ public class A23合并K个排序链表 {
         int len = 3;
         ListNode[] nodes = new ListNode[len];
         for (int i = 0; i < len; i++) {
-            int[] n = new int[1000];
+            int[] n = new int[10];
             for (int j = 0; j < n.length; j++) {
                 n[j] = j * len + i;
             }
@@ -39,11 +40,7 @@ public class A23合并K个排序链表 {
         long start = System.currentTimeMillis();
         ListNode mergeTwoLists = new A23合并K个排序链表().mergeKLists2(nodes);
         System.out.println((System.currentTimeMillis() - start) + "ms");
-        while (mergeTwoLists != null) {
-            System.out.print(mergeTwoLists.val + "=>");
-            mergeTwoLists = mergeTwoLists.next;
-        }
-
+        System.out.println(Util.toStr(mergeTwoLists));
     }
 
     public ListNode mergeKLists(ListNode[] lists) {

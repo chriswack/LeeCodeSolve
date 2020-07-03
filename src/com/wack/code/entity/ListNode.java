@@ -29,4 +29,17 @@ public class ListNode {
         return head.next;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        ListNode node = this;
+        while (node != null) {
+            sb.append(node.val + "=>");
+            node = node.next;
+        }
+        if (sb.length() >= 2) {
+            return sb.substring(0, sb.length() - 2);
+        }
+        return sb.toString();
+    }
 }

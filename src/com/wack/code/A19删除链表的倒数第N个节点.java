@@ -1,5 +1,7 @@
 package com.wack.code;
 
+import com.wack.code.entity.ListNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,16 +84,6 @@ public class A19删除链表的倒数第N个节点 {
 
         targetNode.next = targetNode.next.next;
         return newNode.next;
-    }
-
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
     }
 
 }
