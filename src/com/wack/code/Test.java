@@ -1,23 +1,20 @@
 package com.wack.code;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Test {
     public static void main(String[] args) {
 
-
-        List<String> strs = new ArrayList();
-        strs.add(null);
-        strs.add(null);
-        strs.add(null);
-        strs.add(null);
-        System.out.println(strs.size());
-
-        boolean s = new Character('{') == '{';
-        boolean s2 = new Character('{').equals('{') ;
-        System.out.println(s);
-        System.out.println(s2);
+        String reg = "\\D+(\\d+)$";    //提取字符串末尾的数字
+        String s = "湖南省长沙市天心区金地三千府七期G2299-1";
+        Pattern p2 = Pattern.compile(reg);
+        Matcher m2 = p2.matcher(s);
+        if (m2.find()) {
+            System.out.println(m2.group(1));  // 组提取字符串
+        } else {
+            System.out.println("123");  // 组提取字符串
+        }
     }
 
 }
