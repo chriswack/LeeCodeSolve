@@ -2,6 +2,7 @@ package com.wack.code;
 
 import com.wack.code.entity.TreeNode;
 import com.wack.code.entity.Util;
+import com.wack.code.util.Tool;
 
 /**
  * 将一个按照升序排列的有序数组，转换为一棵高度平衡二叉搜索树。
@@ -26,10 +27,10 @@ import com.wack.code.entity.Util;
  */
 public class A108将有序数组转换为二叉搜索树 {
     public static void main(String[] args) {
-        long start = System.currentTimeMillis();
-        TreeNode treeNode = new A108将有序数组转换为二叉搜索树().sortedArrayToBST(new int[]{-10, -3, 0, 5, 9});
-        System.out.println((System.currentTimeMillis() - start) + "ms");
-        System.out.println(Util.toStr(treeNode));
+        Tool.costTime(() -> {
+            TreeNode treeNode = new A108将有序数组转换为二叉搜索树().sortedArrayToBST(new int[]{-10, -3, 0, 5, 9});
+            System.out.println(Util.toStr(treeNode));
+        });
     }
 
     public TreeNode sortedArrayToBST(int[] nums) {

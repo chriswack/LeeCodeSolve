@@ -1,5 +1,7 @@
 package com.wack.code;
 
+import com.wack.code.util.Tool;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -40,11 +42,10 @@ public class A1431拥有最多糖果的孩子 {
 
 
     public static void main(String[] args) {
-        long start = System.currentTimeMillis();
-        List<Boolean> res = new A1431拥有最多糖果的孩子().kidsWithCandies(new int[]{1, -2, -5, -4, -3, 3, 3, 5}, 5);
-        System.out.println(System.currentTimeMillis() - start + "ms");
-        System.out.println(Arrays.toString(res.toArray()));
-
+        Tool.costTime(() -> {
+            List<Boolean> res = new A1431拥有最多糖果的孩子().kidsWithCandies(new int[]{1, -2, -5, -4, -3, 3, 3, 5}, 5);
+            System.out.println(Arrays.toString(res.toArray()));
+        });
     }
 
 

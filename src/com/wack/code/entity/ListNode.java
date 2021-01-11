@@ -29,6 +29,18 @@ public class ListNode {
         return head.next;
     }
 
+    /**
+     * 返回测试数据
+     * @return 测试数据
+     */
+    public static ListNode getTest(int length){
+        int[] n = new int[length];
+        for (int i = 0; i < length; i++) {
+            n[i] = i;
+        }
+        return get(n);
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

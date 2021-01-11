@@ -1,5 +1,7 @@
 package com.wack.code;
 
+import com.wack.code.util.Tool;
+
 /**
  * 在柠檬水摊上，每一杯柠檬水的售价为 5 美元。
  * <p>
@@ -52,10 +54,10 @@ public class A860柠檬水找零 {
 
 
     public static void main(String[] args) {
-        long start = System.currentTimeMillis();
-        boolean res = new A860柠檬水找零().lemonadeChange(new int[]{5, 5, 10, 10});
-        System.out.println(System.currentTimeMillis() - start + "ms");
-        System.out.println(res);
+        Tool.costTime(() -> {
+            boolean res = new A860柠檬水找零().lemonadeChange(new int[]{5, 5, 10, 10});
+            System.out.println(res);
+        });
 
     }
 
