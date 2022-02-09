@@ -14,6 +14,7 @@ public class Test {
     private static void random() {
         Random random = new Random();
         for (int i = 0; i < 100; i++) {
+
             System.out.println(""+BigDecimal.valueOf(random.nextDouble()).setScale(3, BigDecimal.ROUND_HALF_UP).doubleValue());
         }
     }
